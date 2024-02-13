@@ -6,6 +6,7 @@ set -x
 
 CURRENT_REV="$(git rev-parse --abbrev-ref HEAD)"
 
+# CI specific stuff
 if [ -v GITLAB_CI ]; then
     CI_RSYNC_ARGS=("--include" ".gitlab-ci.yml")
     CI_COMMIT_MSG=("-m" "chore(ci): update CI from template")
