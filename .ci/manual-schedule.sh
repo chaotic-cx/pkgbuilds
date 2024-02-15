@@ -11,7 +11,7 @@ source .ci/util.shlib
 # Read config file into global variables
 UTIL_READ_CONFIG_FILE
 
-if [ "$FINAL" == "all" ]; then
+if [ "$PACKAGES" == "all" ]; then
     .ci/schedule-packages.sh schedule all
     exit 0
 fi
