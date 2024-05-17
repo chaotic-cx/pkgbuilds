@@ -20,7 +20,7 @@ source=(
   "${_url}/releases/download/${pkgver}/${_manarc}" # to get the manual
   '01-make.patch'
   '02-lib-load-path.patch'
-  '03-avx512-fix.patch'
+  '03-avx512-fix.patch' # https://github.com/ip7z/7zip/issues/27
 )
 
 sha256sums=(
