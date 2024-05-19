@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
-set -x
 
 # This script updates this repository with the latest changes from the template repository
 
 CURRENT_REV="$(git rev-parse --abbrev-ref HEAD)"
 
+# CI specific stuff
 if [ -v GITLAB_CI ]; then
     CI_RSYNC_ARGS=("--include" ".gitlab-ci.yml")
     CI_COMMIT_MSG=("-m" "chore(ci): update CI from template")
@@ -25,16 +25,6 @@ trap "git reset --hard $CURRENT_REV" ERR
 # Generic template files
 rsync -a --delete --exclude ".ci/config" \
     --include ".ci/***" \
-    --include ".editorconfig" \
-    --include ".envrc" \
-    --include ".markdownlint.yaml" \
-    --include ".prettierignore" \
-    --include ".shellcheckrc" \
-    --include ".yamllint" \
-    --include "default.nix" \
-    --include "flake.lock" \
-    --include "flake.nix" \
-    --include "shell.nix" \
     "${CI_RSYNC_ARGS[@]}" \
     --exclude "*" \
     "$TMPDIR/template/" .
