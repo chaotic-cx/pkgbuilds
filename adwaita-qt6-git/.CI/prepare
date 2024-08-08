@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+sed -E -e 's&, git version&&' \
+  -e 's&^pkgbase=\S+$&pkgbase=adwaita-qt6-git&' \
+  -i PKGBUILD
