@@ -32,16 +32,8 @@ options=('!debug')
 backup=("etc/default/xboxdrv")
 
 _pkgsrc="$_pkgname"
-source=(
-  "$_pkgsrc"::"git+$url.git#commit=$_commit"
-  "xboxdrv.default"
-  "xboxdrv.service"
-)
-sha256sums=(
-  'SKIP'
-  '68a286300d28bbfc97eb694c6cc413776f0bc16e35de6d1969f13ef1e7d1cac5'
-  'd631a8c3af7e2b4ef22f1494ded5d7a8029a8dd9756ef8907f909ef6aa0afc2b'
-)
+source=("$_pkgsrc"::"git+$url.git#commit=$_commit")
+sha256sums=('SKIP')
 
 build() {
   arch-meson build "$_pkgsrc"
